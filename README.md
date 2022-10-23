@@ -10,18 +10,32 @@ This repo contains a basic example of a fullstack java project.
 
  # Content of the project.
  $ ls
-pom.xml  README.md  src  target
+pom.xml  README.md  src
 
- # Build the project using maven.
- $ mvn package
+ # Build the project and include the dependencies such as the mariadb driver.
+ $ mvn assembly:assembly -DdescriptorId=jar-with-dependencies
 
- # If the build succeeded, there will be a targe directory.
+ # If the build succeeded, there will be a target directory.
  $ ls target/
-classes  fullstackproject-0.0.1-SNAPSHOT.jar  generated-sources
+ archive-tmp  fullstackproject-0.0.1-SNAPSHOT.jar   generated- sources
+ classes      fullstackproject-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+ maven-archiver  surefire-reports generated-test-sources  maven-status    test-classes
+
+> Note that there are 2 jar generated, one contains the dependencies and the other just
+> the classes of the project.
+
+ # To see the content of the jars, run:
+ $ jar tf ./target/fullstackproject-0.0.1-SNAPSHOT.jar
+ $ jar tf ./target/fullstackproject-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
 
  # Execute the class that contains the main method.
- $ java -cp target/fullstackproject-0.0.1-SNAPSHOT.jar com.fullstack.project.Main
-Basic fullstack project
+ $ java -cp target/fullstackproject-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.fullstack.project.Main
+ Basic fullstack project
+ Product name: MariaDB
+ Database version: 10
+ Driver name: MariaDB Connector/J
+ Driver version: 3.0.7
 
  # Clean the project
  $ mvn clean
@@ -30,7 +44,13 @@ Basic fullstack project
 > For more information about maven see:
 > https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 
-# How to connect to MariaDb
+## How to run the test cases
+
+```shell
+ $ mvn test
+```
+
+## How to connect to MariaDb
 
 ```shell
  $ mysql -u root  -p
