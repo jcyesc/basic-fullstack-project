@@ -29,3 +29,33 @@ Basic fullstack project
 
 > For more information about maven see:
 > https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+# How to connect to MariaDb
+
+```shell
+ $ mysql -u root  -p
+
+MariaDB [(none)]> show databases;
++------------------------+
+| Database               |
++------------------------+
+| information_schema     |
+| mysql                  |
+| people_db              |
+| performance_schema     |
++------------------------+
+5 rows in set (0.000 sec)
+
+MariaDB [(none)]> use people_db;
+
+Database changed
+
+MariaDB [people_db]> show tables;
++---------------------+
+| Tables_in_people_db |
++---------------------+
+| country             |
+| person              |
++---------------------+
+2 rows in set (0.000 sec)
+```
