@@ -6,7 +6,7 @@ CREATE DATABASE people_db;
 USE people_db;
 
 CREATE TABLE country(
-id_country INTEGER NOT NULL,
+id_country INTEGER NOT NULL AUTO_INCREMENT,
 name VARCHAR(250) NOT NULL,
 PRIMARY KEY (id_country)
 );
